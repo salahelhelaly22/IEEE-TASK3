@@ -1,0 +1,166 @@
+using System;
+using System.Dynamic;
+using System.Collections.Generic;
+#region Task 1: Shallow Copy vs Deep Copy  
+
+// public class Address
+// {
+//     public string city { get; set;}
+// }
+// public class customer
+// {
+//     public string Name { get; set;}
+//     public Address Address { get; set;}
+//     public customer shallowcopy()
+//     {
+//         return (customer)this.MemberwiseClone();
+//     }
+//     public customer deepcopy()
+//     {
+//         return new customer
+//         {
+//             Name = this.Name,
+//             Address = new Address{city=this.Address.city}
+//         };
+//     }
+// }
+// class program
+// {
+//     static void Main()
+//     {
+//         customer original=new customer
+//         {
+//             Name="Salah",
+//             Address=new Address{city="Cairo"}
+//         };
+//         customer shallow= original.shallowcopy() ;
+//         customer deep = original.deepcopy();
+//         original.Address.city="Alexandria";
+//         Console.WriteLine("original : "+original.Address.city);
+//         Console.WriteLine("shallow : "+shallow.Address.city);
+//         Console.WriteLine("deep : "+deep.Address.city);  
+//     }
+// }
+#endregion
+#region Task 2: Early vs Late Binding
+
+// class Animal
+// {
+//     public virtual void speak()=>Console.WriteLine("Animal sound");
+//     public void Type()=>Console.WriteLine("I am an Animal");
+// }
+// class Dog : Animal
+// {
+//     public override void speak()=>Console.WriteLine("Woof");
+//     public new void Type()=>Console.WriteLine("I am a Dog");
+
+// }
+// static class Printer
+// {
+//     public static void Print(object o)=>Console.WriteLine("Object version");
+//     public static void Print(string s)=>Console.WriteLine("String version");
+// }
+// class Program
+// {
+//     static void Main()
+//     {
+
+//         Animal animal = new Dog();
+//         animal.speak();
+//         animal.Type();
+
+//         object text = "hello";
+//         Printer.Print(text);
+//         Printer.Print((dynamic)text);
+//     }
+// }
+//         //output prediction:
+//         //Woof
+//         // I am an Animal
+//         // Object version
+//         // String version
+#endregion
+#region Task 3: Interfaces and Multiple Inheritance
+
+// interface iflyable{ string move();}
+// interface iswimmable{ string move();}
+// interface iwalkable{ string move();}
+
+// class Duck : iflyable, iswimmable, iwalkable
+// {
+//     string iflyable.move()
+//     {
+//         return "the duck is flying";
+//     }
+//     string iswimmable.move()
+//     {
+//         return "the duck is swimming";
+//     } 
+//     string iwalkable.move()
+//     {
+//         return "the duck is walking";
+//     }
+    
+// }
+// class program
+// {
+//     static void Main()
+//     {
+//        Duck duck=new Duck();
+//        iflyable flayer = duck;
+//        iswimmable swimmer = duck;
+//        iwalkable walker = duck;
+//        System.Console.WriteLine(flayer.move());
+//        System.Console.WriteLine(swimmer.move());
+//        System.Console.WriteLine(walker.move());
+
+
+//     }   
+    
+// }
+#endregion
+#region Task 4: Records
+// record Money(decimal Amount, string Currency);
+// class Money2
+// {
+//     public decimal Amount { get; }
+//     public string Currency { get; }
+//     public Money2(decimal amount, string currency)
+//     {
+//         Amount = amount;
+//         Currency = currency;
+//     }
+// }
+// class Program
+// {
+//     static void Main()
+//     {
+//         Money m1 = new Money(100m, "USD");
+//         Money m2 = new Money(100m, "USD");
+//         System.Console.WriteLine(m1 == m2);
+//         System.Console.WriteLine(ReferenceEquals(m1, m2));
+//         System.Console.WriteLine(m1.GetHashCode());
+//         System.Console.WriteLine(m2.GetHashCode());
+//         System.Console.WriteLine(m1.ToString());
+//         //===============================================
+//         Money2 c1 = new Money2(100m, "USD");
+//         Money2 c2 = new Money2(100m, "USD");
+//         System.Console.WriteLine(c1 == c2);
+//         System.Console.WriteLine(ReferenceEquals(c1, c2));
+//         System.Console.WriteLine(c1.GetHashCode());
+//         System.Console.WriteLine(c2.GetHashCode());
+//         System.Console.WriteLine(c1.ToString());
+//         //===============================================
+//         Money m3=m1 with{Currency="EUR"};
+//         System.Console.WriteLine(m3);
+//         System.Console.WriteLine(m1);
+//         //===============================================
+//         HashSet<Money>Set= new HashSet<Money>();
+//         Set.Add(m1);
+//         Set.Add(m2);
+//         System.Console.WriteLine(Set.Count);
+//     }
+// } 
+//    //record compares objects by values.
+//    //class compares by reference.
+#endregion
